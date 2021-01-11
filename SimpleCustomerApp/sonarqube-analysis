@@ -3,9 +3,9 @@ node {
     git ' https://github.com/shiwanee-code/SimpleCustomerApp.git'
   }
   stage('SonarQube analysis') {
-    def scannerHome = tool 'SonarScanner 4.5.0';
+    def scannerHome = tool 'Sonar_scanner';
     withSonarQubeEnv('sonarqube') {
-      sh "${scannerHome}/opt/sonar-scanner-4.5.0.2216-linux/"
+      sh "${scannerHome}/bin/sonar-scanner"
     }
   }
 }
