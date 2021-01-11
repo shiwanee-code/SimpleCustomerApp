@@ -1,0 +1,11 @@
+node {
+  stage('SCM') {
+    git 'https://github.com/shiwanee-code/SimpleCustomerApp/
+  }
+  stage('SonarQube analysis') {
+    def scannerHome = tool 'SonarScanner 4.0';
+    withSonarQubeEnv('My SonarQube Server') {
+      sh "${scannerHome}/bin/sonar-scanner"
+    }
+  }
+}
